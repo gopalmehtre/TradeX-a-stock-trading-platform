@@ -7,7 +7,6 @@ import Universe from './Universe'
 export default function ProductsPage() {
   return (
     <>
-    <h1>product</h1>
     <Hero/>
     <LeftSection
     imageURL="media/images/kite.png"
