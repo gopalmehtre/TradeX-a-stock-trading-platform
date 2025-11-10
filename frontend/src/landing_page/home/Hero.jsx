@@ -7,7 +7,7 @@ function Hero() {
             <div className='row text-center'>
                 <img src="media/images/homeHero.png" alt="homeHeroComponent" />
 
-                <h1 className='mt-5' >Invest In Everything.</h1>
+                <h1 className='mt-5' >Learn. Invest. Grow.</h1>
 
                 <p>Online platform to invest in stocks, derivatives, mutual funds, and more.</p>
 
