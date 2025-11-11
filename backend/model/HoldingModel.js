@@ -1,5 +1,13 @@
-import  Holding  from "../schemas/HoldingSchema.js";
+import mongoose, {Schema} from "mongoose";
 
-const HoldingModel = Holding;
+const HoldingSchema = new Schema({
+  name: String,
+  qty: Number,
+  avg: Number,
+  price: Number,
+  net: String,
+  day: String,
+});
 
-export default {HoldingModel};
+const Holding = mongoose.model('Holding', HoldingSchema);
+export default Holding;

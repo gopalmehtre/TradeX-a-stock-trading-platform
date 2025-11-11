@@ -1,5 +1,10 @@
-import  Order  from "../schemas/OrderSchema.js";
+import mongoose, {Schema} from "mongoose";
+const OrdersSchema = new Schema({
+  name: String,
+  qty: Number,
+  price: Number,
+  mode: String,
+});
 
-const OrderModel = Order;
-
-export default {OrderModel};
+const Order = mongoose.model('Order', OrdersSchema);
+export default Order;

@@ -1,5 +1,15 @@
-import  Position  from "../schemas/PositionSchema.js";
+import mongoose, {Schema} from "mongoose";
 
-const PositionModel = Position;
+const PositionSchema = new Schema({
+  product: String,
+  name: String,
+  qty: Number,
+  avg: Number,
+  price: Number,
+  net: String,
+  day: String,
+  isLoss: Boolean,
+});
 
-export default {PositionModel};
+const Position = mongoose.model('Postion', PositionSchema);
+export default Position;
