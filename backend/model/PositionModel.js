@@ -11,5 +11,5 @@ const PositionSchema = new Schema({
   isLoss: Boolean,
 });
 
-const Position = mongoose.model('Postion', PositionSchema);
-export default Position;
+const PositionModel = mongoose.model('Postion', PositionSchema);
+export default PositionModel;

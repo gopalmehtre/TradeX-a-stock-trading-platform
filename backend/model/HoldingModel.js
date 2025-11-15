@@ -9,5 +9,5 @@ const HoldingSchema = new Schema({
   day: String,
 });
 
-const Holding = mongoose.model('Holding', HoldingSchema);
-export default Holding;
+const HoldingModel = mongoose.model('Holding', HoldingSchema);
+export default HoldingModel;

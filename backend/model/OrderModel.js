@@ -6,5 +6,5 @@ const OrdersSchema = new Schema({
   mode: String,
 });
 
-const Order = mongoose.model('Order', OrdersSchema);
-export default Order;
+const OrderModel = mongoose.model('Order', OrdersSchema);
+export default OrderModel;
