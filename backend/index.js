@@ -24,8 +24,6 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/allHoldings', async(req , res) => {
     try {
         let allHoldings = await HoldingModel.find({});
-        console.log('Holdings fetched:', allHoldings.length);
-        console.log('Holdings data:', JSON.stringify(allHoldings, null, 2));
         res.json(allHoldings);
     } catch (error) {
         console.error('Error fetching holdings:', error);
