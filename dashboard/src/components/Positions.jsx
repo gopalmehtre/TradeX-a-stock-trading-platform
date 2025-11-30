@@ -1,14 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import { positions } from '../data/data';
+import api from '../services/api';
 
 export default function Positions() {
   const [allPositions, setAllPositions] = useState([]);
 
     useEffect(() => {
-      axios.get('http://localhost:8000/allPositions').then((res) => {
+      api.get('/allPositions').then((res) => {
         setAllPositions(res.data);
-      });
+      }) .catch((error) => {
+        console.error('Error fetching positions', error);
+      })
     }, []);
 
   return (

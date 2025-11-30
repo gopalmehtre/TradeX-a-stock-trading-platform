@@ -10,7 +10,7 @@ export default function ProductsPage() {
     <Hero/>
     <LeftSection
     imageURL="media/images/kite.png"
-    productName="Kite"
+    productName="Dashboard"
     productDescription="Our ultra-fast flagship trading platform with streaming market data, advanced charts, an elegant UI, and more. Enjoy the Kite experience seamlessly on your Android and iOS devices."
     tryDemo=""
     learnMore=""
@@ -34,7 +34,7 @@ export default function ProductsPage() {
       />
       <RightSection
         imageURL="media/images/kiteconnect.png"
-        productName="Kite Connect API"
+        productName="Connect API"
         productDesription="Build powerful trading platforms and experiences with our super simple HTTP/JSON APIs. If you are a startup, build your investment app and showcase it to our clientbase."
         learnMore=""
       />

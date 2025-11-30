@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-
+import api from "../services/api";  
 import BuyActionWindow from "./BuyActionWindow";
+import SellActionWindow from "./SellActionWindow";
 
 const GeneralContext = React.createContext({
   openBuyWindow: (uid) => {},
   closeBuyWindow: () => {},
+  openSellWindow: (uid) => {},
+  closeSellWindow: (uid) => {},
   holdings: [],
   refreshHoldings: () => {},
   isLoadingHoldings: false,
@@ -13,11 +15,11 @@ const GeneralContext = React.createContext({
 
 export const GeneralContextProvider = (props) => {
   const [isBuyWindowOpen, setIsBuyWindowOpen] = useState(false);
+  const [isSellWindowOpen, setIsSellWindowOpen] = useState(false);
   const [selectedStockUID, setSelectedStockUID] = useState("");
   const [holdings, setHoldings] = useState([]);
   const [isLoadingHoldings, setIsLoadingHoldings] = useState(false);
 
-  // Fetch holdings on component mount
   useEffect(() => {
     fetchHoldings();
   }, []);
@@ -26,7 +28,7 @@ export const GeneralContextProvider = (props) => {
     setIsLoadingHoldings(true);
     console.log('Fetching holdings from backend...');
     try {
-      const response = await axios.get('http://localhost:8000/allHoldings');
+      const response = await api.get('/allHoldings');  // Changed from axios.get('http://localhost:8000/allHoldings')
       console.log('Holdings response:', response.data);
       setHoldings(response.data);
     } catch (error) {
@@ -47,6 +49,16 @@ export const GeneralContextProvider = (props) => {
     setSelectedStockUID("");
   };
 
+  const handleOpenSellWindow = (uid) => {
+    setIsSellWindowOpen(true);
+    setSelectedStockUID(uid);
+  };
+
+  const handleCloseSellWindow = (uid) => {
+    setIsSellWindowOpen(false);
+    setSelectedStockUID("");
+  };
+
   const refreshHoldings = () => {
     fetchHoldings();
   };
@@ -56,13 +68,16 @@ export const GeneralContextProvider = (props) => {
       value={{
         openBuyWindow: handleOpenBuyWindow,
         closeBuyWindow: handleCloseBuyWindow,
-        holdings,
-        refreshHoldings,
-        isLoadingHoldings,
+        openSellWindow: handleOpenSellWindow,
+        closeSellWindow: handleCloseSellWindow,
+        holdings: holdings,
+        refreshHoldings: refreshHoldings,
+        isLoadingHoldings: isLoadingHoldings,
       }}
     >
       {props.children}
       {isBuyWindowOpen && <BuyActionWindow uid={selectedStockUID} />}
+      {isSellWindowOpen && <SellActionWindow uid= {selectedStockUID} />}
     </GeneralContext.Provider>
   );
 };

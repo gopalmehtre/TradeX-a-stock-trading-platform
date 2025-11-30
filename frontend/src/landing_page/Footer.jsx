@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer style={{ backgroundColor: "rgb(250, 250, 250)" }}>
-      <div className="container border-top mt-5">
+    <footer style={{ backgroundColor: "var(--bg-secondary)" }}>
+      <div className="container border-top mt-5" style={{ borderColor: "var(--border-color) !important" }}>
         <div className="row mt-5">
           <div className="col">
             <h3 style={{color: "#0080ff"}}><i class="fa fa-line-chart" aria-hidden="true"></i> TradeX</h3>
