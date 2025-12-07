@@ -10,9 +10,9 @@ export default function Menu() {
     setSelectedMenu(index);
   }
 
-  const handleProfileClick = (index) => {
-    setIsProfileDropdownOpen(!isProfileDropdownOpen);
-  }
+  // const handleProfileClick = (index) => {
+  //   setIsProfileDropdownOpen(!isProfileDropdownOpen);
+  // }
 
   const menuClass = "menu" ;
   const activeMenuClass = "menu selected" ;
@@ -90,10 +90,10 @@ export default function Menu() {
           </li>
         </ul>
         <hr />
-        <div className="profile" onClick={handleProfileClick} >
+        {/* <div className="profile" onClick={handleProfileClick} >
           <div className="avatar">U</div>
           <p className="username">USERID</p>
-        </div>
+        </div> */}
       </div>
     </div>
   )

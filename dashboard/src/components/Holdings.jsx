@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import GeneralContext from './GeneralContext';
+import { LineGraph } from './LineGraph.jsx';
 
 export default function Holdings() {
   const { holdings: allHoldings, isLoadingHoldings, openSellWindow } = useContext(GeneralContext);
@@ -12,6 +13,36 @@ export default function Holdings() {
       </>
     );
   }
+
+  const labels = allHoldings.map((subArray) => subArray['name']);
+
+  const data = {
+    labels,
+    datasets : [
+      {
+        label : 'Stock Price',
+        data : allHoldings.map((stock) => stock.price),
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        segment: {
+          borderColor: (ctx) => {
+            const p0 = ctx.p0.parsed.y;
+            const p1 = ctx.p1.parsed.y;
+            return p1 > p0 ? 'rgba(18, 134, 3, 1)' : 'rgba(251, 5, 5, 1)';
+          }
+        },
+        borderWidth: 2,
+      },
+    //   {
+    //   label: 'orders',
+    //   data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+    //   borderColor: 'rgb(53, 162, 235)',
+    //   backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    // },
+      
+    ],
+  };
+
+  
 
   return (
     <>
@@ -93,6 +124,8 @@ export default function Holdings() {
           <p>P&L</p>
         </div>
       </div>
+
+      <LineGraph data={data}/>
     </>
   )
 }
