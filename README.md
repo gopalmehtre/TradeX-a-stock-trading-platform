@@ -7,8 +7,101 @@ A full-stack stock trading platform built with Node.js, Express, and React that 
 The project consists of three main components:
 
 - **backend/** - Node.js/Express REST API server
-- **frontend/** - React-based user interface
-- **dashboard/** - Admin/analytics dashboard
+- **frontend/** - React-based landing page and user interface
+- **dashboard/** - Trading dashboard with portfolio management
+
+```
+.
+├── backend/
+│   ├── controllers/
+│   │   ├── AuthController.js
+│   │   └── dashboardManager.js
+│   ├── middlewares/
+│   │   └── AuthMiddleware.js
+│   ├── model/
+│   │   ├── HoldingModel.js
+│   │   ├── OrderModel.js
+│   │   ├── PositionModel.js
+│   │   └── UserModel.js
+│   ├── routes/
+│   │   └── Routes.js
+│   ├── util/
+│   │   ├── processOrder.js
+│   │   └── SecretToken.js
+│   ├── index.js
+│   ├── .env
+│   └── package.json
+│
+├── frontend/
+│   ├── public/
+│   │   ├── font-awesome/
+│   │   └── media/
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── ThemeToggle.jsx
+│   │   ├── contexts/
+│   │   │   └── AuthContext.jsx
+│   │   ├── landing_page/
+│   │   │   ├── about/
+│   │   │   │   ├── About.jsx
+│   │   │   │   ├── Hero.jsx
+│   │   │   │   └── Team.jsx
+│   │   │   ├── home/
+│   │   │   │   ├── Award.jsx
+│   │   │   │   ├── Education.jsx
+│   │   │   │   ├── Hero.jsx
+│   │   │   │   ├── HomePage.jsx
+│   │   │   │   ├── Pricing.jsx
+│   │   │   │   └── Stats.jsx
+│   │   │   ├── pricing/
+│   │   │   ├── product/
+│   │   │   ├── signup/
+│   │   │   ├── support/
+│   │   │   ├── Footer.jsx
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── NotFound.jsx
+│   │   │   └── OpenAccount.jsx
+│   │   ├── assets/
+│   │   ├── App.jsx
+│   │   ├── environment.js
+│   │   └── main.jsx
+│   ├── index.html
+│   ├── vite.config.js
+│   └── package.json
+│
+└── dashboard/
+    ├── src/
+    │   ├── components/
+    │   │   ├── Apps.jsx
+    │   │   ├── BuyActionWindow.jsx
+    │   │   ├── Dashboard.jsx
+    │   │   ├── Doughnut.jsx
+    │   │   ├── Funds.jsx
+    │   │   ├── GeneralContext.jsx
+    │   │   ├── Holdings.jsx
+    │   │   ├── Home.jsx
+    │   │   ├── LineGraph.jsx
+    │   │   ├── Menu.jsx
+    │   │   ├── Orders.jsx
+    │   │   ├── Positions.jsx
+    │   │   ├── SellActionWindow.jsx
+    │   │   ├── Summary.jsx
+    │   │   ├── ThemeToggle.jsx
+    │   │   ├── TopBar.jsx
+    │   │   └── WatchList.jsx
+    │   ├── data/
+    │   │   └── data.js
+    │   ├── services/
+    │   │   └── api.js
+    │   ├── assets/
+    │   ├── App.jsx
+    │   ├── environment.js
+    │   └── main.jsx
+    ├── public/
+    ├── index.html
+    ├── vite.config.js
+    └── package.json
+```
 
 ## Features
 
@@ -19,10 +112,15 @@ The project consists of three main components:
 
 ### Trading Operations
 - Place new orders
-- View all holdings
+- View all holdings with interactive charts
 - Track positions
 - Order history management
 - Update holdings information
+
+### Data Visualization
+- Interactive line charts displaying stock price trends
+- Dynamic color-coded segments (green for upward trends, red for downward trends)
+- Real-time holdings visualization with Chart.js
 
 ## Tech Stack
 
@@ -36,6 +134,8 @@ The project consists of three main components:
 ### Frontend
 - **React** - UI framework
 - **Vite** - Build tool and dev server
+- **Chart.js** - Data visualization library
+- **react-chartjs-2** - React wrapper for Chart.js
 - **ESLint** - Code linting
 
 ## Getting Started
@@ -50,7 +150,7 @@ The project consists of three main components:
 1. **Clone the repository**
    ```sh
    git clone <repository-url>
-   cd Stock\ trading\ platform
+   cd Stock-trading-platform
    ```
 
 2. **Setup Backend**
@@ -94,7 +194,7 @@ The project consists of three main components:
    npm run dev
    ```
 
-3. **Start Dashboard (optional)**
+3. **Start Dashboard**
    ```sh
    cd dashboard
    npm run dev
